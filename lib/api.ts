@@ -1,5 +1,13 @@
 export const API_URL = process.env.NEXT_PUBLIC_PROJECT_API_URL;
 
+export interface Contact {
+  name: string;
+  phone: string;
+  email: string;
+  portfolio: string;
+  gitHub: string;
+}
+
 export interface WorkExperience {
   id: string;
   company: string;
@@ -68,4 +76,10 @@ export async function getEducation(): Promise<Education | null> {
 export async function getCertifications(): Promise<string[]> {
   const portfolio = await getPortfolio();
   return portfolio.certifications;
+}
+
+// 연락처 데이터만 가져오는 함수
+export async function getContact(): Promise<Contact> {
+  const portfolio = await getPortfolio();
+  return portfolio.contact;
 }
