@@ -12,17 +12,11 @@ export default function Navigation() {
           <Link href="/">Home</Link> {path === "/" ? "🥳" : ""}
         </li>
         <li>
-          <Link href="/about">About</Link> {path === "/about" ? "🥳" : ""}
-        </li>
-        <li>
           <Link href="/project">Project</Link>
           {path === "/project" ? "🥳" : ""}
         </li>
-        <li>
-          <Link href="/contact">Contact</Link>
-          {path === "/contact" ? "🥳" : ""}
-        </li>
       </ul>
+      <div>Contact popup area</div>
     </nav>
   );
 }
