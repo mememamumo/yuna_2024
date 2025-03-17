@@ -67,15 +67,15 @@ export default function Main() {
         <h3>About</h3>
         <h4>경력</h4>
         <div>
-          {workExperience.map((work, index) => {
+          {workExperience.map((work) => {
             return (
-              <ul>
-                <li key={index}>{work.company}</li>
-                <li key={index}>{work.period}</li>
-                <li key={index}>{work.position}</li>
-                <li key={index}>
-                  {work.responsibilities.map((resp) => {
-                    return <p>{resp}</p>;
+              <ul key={work.id}>
+                <li>{work.company}</li>
+                <li>{work.period}</li>
+                <li>{work.position}</li>
+                <li>
+                  {work.responsibilities.map((resp, index) => {
+                    return <p key={`${work.id}-resp-${index}`}>{resp}</p>;
                   })}
                 </li>
               </ul>
@@ -92,7 +92,7 @@ export default function Main() {
         <h4>자격증</h4>
         <ul>
           {certifications.map((cert, index) => {
-            return <li key={index}>{cert}</li>;
+            return <li key={`cert-${index}`}>{cert}</li>;
           })}
         </ul>
       </section>

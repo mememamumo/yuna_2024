@@ -29,6 +29,7 @@ export interface ProjectExperience {
   overview: string[];
   tasks: string[];
   achievements: string[];
+  nextProject?: ProjectExperience; // 선택적 필드 추가
 }
 
 export interface Portfolio {
@@ -82,4 +83,37 @@ export async function getCertifications(): Promise<string[]> {
 export async function getContact(): Promise<Contact> {
   const portfolio = await getPortfolio();
   return portfolio.contact;
+}
+
+// 프로젝트 가져오는 함수
+export async function getProject(
+  id: string
+): Promise<ProjectExperience | null> {
+  const portfolio = await getPortfolio();
+  const projects = portfolio.projectExperience;
+  const currentIdx = projects.findIndex((p: ProjectExperience) => p.id === id);
+
+  if (currentIdx === -1) return null;
+
+  const project = projects[currentIdx];
+  const nextProject = projects[currentIdx + 1] || null; // 다음 프로젝트
+
+  return { ...project, nextProject }; // 다음 프로젝트 추가
+}
+
+// 다음 프로젝트 가져오는 함수
+export async function getNextProject(
+  currentId: string
+): Promise<ProjectExperience | null> {
+  const portfolio = await getPortfolio();
+  const projects = portfolio.projectExperience;
+
+  const currentIdx = projects.findIndex(
+    (project: ProjectExperience) => project.id === currentId
+  );
+  if (currentIdx === -1 || currentIdx === projects.length - 1) {
+    return null; // 마지막 프로젝트면 다음 프로젝트 없음
+  }
+
+  return projects[currentIdx + 1]; // 다음 프로젝트 반환
 }

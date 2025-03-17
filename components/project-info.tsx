@@ -1,6 +1,6 @@
 import { getPortfolio } from "@/lib/api";
 
-async function getProject(id: string) {
+async function getProjects(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
   const portfolio = await getPortfolio(); // API 호출
@@ -11,7 +11,7 @@ async function getProject(id: string) {
 }
 
 export default async function ProjectInfo({ id }: { id: string }) {
-  const project = await getProject(id);
+  const project = await getProjects(id);
 
   if (!project) {
     return <h1>프로젝트를 찾을 수 없습니다</h1>;
