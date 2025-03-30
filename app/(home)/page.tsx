@@ -1,5 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
+// CSR 전용 FallingUI
+const FallingUI = dynamic(() => import("@/components/FallingUI"), {
+  ssr: false,
+});
+
 import {
   Education,
   getCertifications,
@@ -7,7 +14,7 @@ import {
   getWorkExperience,
   WorkExperience,
 } from "@/lib/api";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Main() {
   const [workExperience, setWorkExperience] = useState<WorkExperience[]>([]);
@@ -34,6 +41,10 @@ export default function Main() {
   return (
     <div className="portfolio-main">
       <h2>YUNA2025</h2>
+
+      <Suspense fallback={null}>
+        <FallingUI />
+      </Suspense>
 
       {/* profile */}
       <section>

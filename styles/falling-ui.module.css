@@ -1,0 +1,174 @@
+.scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  transform-origin: center center;
+}
+
+/* 버튼 */
+.fallingButton {
+  all: unset;
+  padding: 0.85rem 1.5rem;
+  border-radius: 2rem;
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.fallingButton.large {
+  padding: 0.75rem 2.5rem;
+}
+
+/* 스위치 */
+.fallingSwitch {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  background-color: #d1d5db;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fallingSwitch.on {
+  background-color: #10b981;
+}
+
+.switchText {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.switchText.left {
+  left: 12px;
+}
+
+.switchText.right {
+  right: 12px;
+}
+
+.slider {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  transition: transform 0.3s ease;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.fallingSwitch.on .slider {
+  transform: translateX(37px);
+}
+
+.sliderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* 툴팁 */
+.tooltipBox {
+  width: max-content;
+  background: #111;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  position: relative;
+  font-weight: 500;
+  max-width: 160px;
+  text-align: center;
+}
+
+.tooltipTriangle {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #111;
+}
+
+/* 인풋 */
+.fallingInput {
+  all: unset;
+  padding: 0.75rem 1.25rem;
+  background: #fff;
+  color: #111;
+  font-weight: 500;
+  border-radius: 1rem;
+  font-size: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* 드롭다운 (인풋 형태) */
+.fallingDropdown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: max-content;
+  background: #f3f4f6;
+  border-radius: 1rem;
+  padding: 0.75rem 1.25rem;
+  font-weight: 500;
+  color: #444;
+  font-size: 1rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.arrowDown {
+  border-top: 6px solid #555;
+  transform: rotate(0deg);
+}
+
+.arrowUp {
+  border-bottom: 6px solid #555;
+  transform: rotate(360deg);
+}
