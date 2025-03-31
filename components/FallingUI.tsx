@@ -16,12 +16,6 @@ const LABELS = [
   "button",
   "button",
   "button",
-  "button",
-  "button",
-  "button",
-  "button",
-  "button",
-  "button",
   "long-button",
   "long-button",
   "switch",
@@ -32,20 +26,33 @@ const LABELS = [
   "dropdown",
 ];
 
-const COLORS = ["#4f46e5", "#10b981", "#f43f5e", "#0ea5e9", "#8b5cf6"];
+const COLORS = [
+  "#f87171",
+  "#fb923c",
+  "#facc15",
+  "#4ade80",
+  "#2dd4bf",
+  "#60a5fa",
+  "#818cf8",
+  "#c084fc",
+  "#f472b6",
+  "#fbbf24",
+];
 
 export default function FallingUI() {
   const sceneRef = useRef<HTMLDivElement>(null);
   const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
   const engineRef = useRef<Engine | null>(null);
+  const runnerRef = useRef<Runner | null>(null);
   const [positions, setPositions] = useState<{ x: number; y: number }[]>([]);
   const [isClient, setIsClient] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [switchStates, setSwitchStates] = useState<boolean[]>([]); // ✅ 여러 스위치 상태
+  const [switchStates, setSwitchStates] = useState<boolean[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [buttonColors, setButtonColors] = useState<string[]>([]); // ✅ 버튼별 초기 컬러
+  const [buttonColors, setButtonColors] = useState<string[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
 
-  // ✅ 위치 랜덤하게 생성
+  // 위치 랜덤하게 생성
   const generateRandomPositions = (
     count: number,
     width: number,
@@ -57,12 +64,16 @@ export default function FallingUI() {
     }));
   };
 
-  // ✅ 버튼별 컬러 미리 랜덤 지정
+  // 컬러 중복 없이 섞는 함수
+  const shuffleColors = (colors: string[]) =>
+    [...colors].sort(() => Math.random() - 0.5);
+
+  // 컬러 중복 없이 순서대로 분배
   const generateButtonColors = (count: number) => {
-    return Array.from({ length: count }).map(() => {
-      const idx = Math.floor(Math.random() * COLORS.length);
-      return COLORS[idx];
-    });
+    const shuffled = shuffleColors(COLORS);
+    return Array.from({ length: count }).map(
+      (_, i) => shuffled[i % shuffled.length]
+    );
   };
 
   const initializeEngine = useCallback(() => {
@@ -79,7 +90,7 @@ export default function FallingUI() {
 
     const walls = [
       Bodies.rectangle(width / 2, height + 50, width, 100, { isStatic: true }),
-      Bodies.rectangle(width / 2, -200, width, 100, { isStatic: true }),
+      Bodies.rectangle(width / 2, -20, width, 100, { isStatic: true }),
       Bodies.rectangle(-50, height / 2, 100, height, { isStatic: true }),
       Bodies.rectangle(width + 50, height / 2, 100, height, { isStatic: true }),
     ];
@@ -95,11 +106,11 @@ export default function FallingUI() {
           rect.width,
           rect.height,
           {
-            restitution: 0.9,
-            frictionAir: 0.02,
-            friction: 0.05,
-            density: 0.001,
-            mass: 0.3,
+            restitution: 0.3, // ✅ 반동 줄임
+            frictionAir: 0.04, // ✅ 공기 마찰
+            friction: 0.1, // ✅ 표면 마찰
+            density: 0.0001, // ✅ 더 가볍게
+            mass: 0.5, // ✅ 관성 향상
           }
         );
         body.el = el;
@@ -109,20 +120,22 @@ export default function FallingUI() {
 
     World.add(world, bodies);
 
-    const mouse = Mouse.create(document.body);
+    const mouse = Mouse.create(scene);
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
       constraint: {
-        stiffness: 0.95,
+        stiffness: 0.98,
         render: { visible: false },
       },
     });
     World.add(world, mouseConstraint);
 
     const runner = Runner.create();
+    runnerRef.current = runner;
     Runner.run(runner, engine);
 
     const update = () => {
+      Engine.update(engine);
       bodies.forEach((body) => {
         if (body.el) {
           body.el.style.position = "absolute";
@@ -136,7 +149,6 @@ export default function FallingUI() {
     update();
 
     return () => {
-      Runner.stop(runner);
       Engine.clear(engine);
       World.clear(engine.world, false);
     };
@@ -149,11 +161,10 @@ export default function FallingUI() {
     setPositions(generateRandomPositions(LABELS.length, w, h));
     setButtonColors(generateButtonColors(LABELS.length));
 
-    // ✅ switch index 추출하여 상태 배열 만들기
     const switchIndices = LABELS.map((label, i) =>
       label === "switch" ? i : -1
     ).filter((i) => i !== -1);
-    const switches = switchIndices.map((_, i) => i === 0); // 첫 번째만 true
+    const switches = switchIndices.map((_, i) => i === 0);
     setSwitchStates(switches);
   }, []);
 
@@ -164,6 +175,9 @@ export default function FallingUI() {
       if (engineRef.current) {
         Engine.clear(engineRef.current);
         engineRef.current = null;
+      }
+      if (runnerRef.current) {
+        Runner.stop(runnerRef.current);
       }
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
@@ -226,8 +240,11 @@ export default function FallingUI() {
               ref={(el) => {
                 elementsRef.current[i] = el;
               }}
-              className={styles.box}
+              className={`${styles.box} ${isDragging ? styles.dragging : ""}`}
               draggable={false}
+              onMouseDown={() => setIsDragging(true)}
+              onMouseUp={() => setIsDragging(false)}
+              onMouseLeave={() => setIsDragging(false)}
             >
               <div
                 className={`${styles.fallingSwitch} ${isOn ? styles.on : ""}`}
@@ -235,11 +252,11 @@ export default function FallingUI() {
               >
                 {isOn ? (
                   <span className={`${styles.switchText} ${styles.left}`}>
-                    ON
+                    On
                   </span>
                 ) : (
                   <span className={`${styles.switchText} ${styles.right}`}>
-                    OFF
+                    Off
                   </span>
                 )}
                 <div className={styles.slider}>
@@ -262,8 +279,11 @@ export default function FallingUI() {
             ref={(el) => {
               elementsRef.current[i] = el;
             }}
-            className={styles.box}
+            className={`${styles.box} ${isDragging ? styles.dragging : ""}`}
             draggable={false}
+            onMouseDown={() => setIsDragging(true)}
+            onMouseUp={() => setIsDragging(false)}
+            onMouseLeave={() => setIsDragging(false)}
           >
             {label === "button" && (
               <button

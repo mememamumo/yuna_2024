@@ -3,6 +3,14 @@
    License: none (public domain)
 */
 
+@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
+
+:root {
+  --font-sans: "SUIT", -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    sans-serif;
+}
+
 html,
 body,
 div,
@@ -88,7 +96,7 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: var(--font-sans);
   vertical-align: baseline;
 }
 
@@ -108,7 +116,7 @@ section {
 }
 
 body {
-  line-height: 1;
+  line-height: 1.8;
 }
 
 ol,
