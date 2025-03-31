@@ -13,9 +13,12 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const LABELS = [
+  "message",
   "button",
   "button",
   "button",
+  "button",
+  "long-button",
   "long-button",
   "long-button",
   "switch",
@@ -334,6 +337,11 @@ export default function FallingUI() {
                     dropdownOpen ? styles.arrowUp : styles.arrowDown
                   }`}
                 ></span>
+              </div>
+            )}
+            {label === "message" && (
+              <div className={styles.messageCard}>
+                💡 Drag UI around the screen
               </div>
             )}
           </div>
