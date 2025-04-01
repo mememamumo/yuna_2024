@@ -1,20 +1,20 @@
-import Navigation from "@/components/navigation";
-import "@/styles/global.css";
+import Header from "@/components/common/Header";
+import "@/styles/global.scss";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | YUNA 2024",
-    default: "YUNA 2024",
+    template: "%s | YUNA — Where UI Meets Code and Strategy",
+    default: "YUNA — Where UI Meets Code and Strategy",
   },
-  description: "2024 Portfolio",
+  description: "2025 Portfolio",
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <body>
-        <Navigation />
+        <Header />
         {children}
       </body>
     </html>

@@ -1,5 +1,5 @@
-import ProjectDetail from "@/components/project-detail";
-import ProjectInfo from "@/components/project-info";
+import ProjectDetail from "@/components/project/ProjectDetail";
+import ProjectInfo from "@/components/project/ProjectInfo";
 import { getProject } from "@/lib/api";
 import { Suspense } from "react";
 

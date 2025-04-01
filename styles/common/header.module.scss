@@ -1,0 +1,145 @@
+// 변수 정의
+$text-color: #fff;
+$spacing: 0.02em;
+
+// 헤더 스타일
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 20px;
+  left: 30px;
+  right: 30px;
+  z-index: 100;
+  padding: 0;
+  color: $text-color;
+  mix-blend-mode: difference;
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    color: #fff;
+  }
+
+  .rightSection {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 24px;
+
+    .navLink {
+      all: unset;
+      position: relative;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: $spacing;
+      transition: color 0.3s ease;
+      overflow: hidden;
+      height: 24px;
+
+      .textLayer {
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.4s ease;
+        height: 48px;
+        cursor: pointer;
+      }
+
+      &:hover .textLayer {
+        transform: translateY(-24px);
+      }
+
+      .text {
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+      }
+    }
+  }
+
+  .clock {
+    width: 110px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: $spacing;
+  }
+
+  .waveText {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: $spacing;
+
+    span {
+      display: inline-block;
+      transform: translateY(0);
+    }
+
+    &.active span {
+      animation: wave 1s ease-in-out;
+      animation-delay: calc(var(--i) * 0.05s);
+    }
+
+    .divider {
+      font-weight: normal;
+    }
+  }
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+// 카드 스타일
+.card {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 200px;
+  color: #fff;
+  background: #000;
+  font-size: 15px;
+  font-weight: 400;
+  z-index: 9999;
+  padding: 1rem 1.4rem;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  mix-blend-mode: normal;
+  isolation: isolate;
+
+  .name {
+    margin-bottom: 4px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .phone,
+  .email {
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 200;
+  }
+  .notice {
+  }
+}

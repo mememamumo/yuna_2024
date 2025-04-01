@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/styles/falling-ui.module.css";
+import styles from "@/styles/interactive/falling-ui.module.scss";
 import {
   Bodies,
   Body,

@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 // CSR 전용 FallingUI
-const FallingUI = dynamic(() => import("@/components/FallingUI"), {
+const FallingUI = dynamic(() => import("@/components/interactive/FallingUI"), {
   ssr: false,
 });
 
