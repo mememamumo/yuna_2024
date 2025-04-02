@@ -6,7 +6,7 @@ interface WavyTextProps {
   text: string;
 }
 
-const WavyText: React.FC<WavyTextProps> = ({ text }) => {
+const WavyText = ({ text }: WavyTextProps) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const WavyText: React.FC<WavyTextProps> = ({ text }) => {
       onMouseLeave={() => setIsActive(false)}
     >
       {text.split("").map((char, i) => {
-        const isDivider = char === "≡";
+        const isDivider = char === "–";
         return (
           <span
             key={i}

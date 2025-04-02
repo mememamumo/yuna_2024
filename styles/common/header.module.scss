@@ -15,6 +15,8 @@ $spacing: 0.02em;
   padding: 0;
   color: $text-color;
   mix-blend-mode: difference;
+  font-size: 15px;
+  font-weight: 800;
 
   .container {
     width: 100%;
@@ -41,8 +43,6 @@ $spacing: 0.02em;
     .navLink {
       all: unset;
       position: relative;
-      font-size: 14px;
-      font-weight: 500;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: $spacing;
@@ -71,16 +71,12 @@ $spacing: 0.02em;
   }
 
   .clock {
-    width: 110px;
-    font-size: 15px;
-    font-weight: 500;
+    width: 120px;
     letter-spacing: $spacing;
   }
 
   .waveText {
     display: inline-block;
-    font-size: 15px;
-    font-weight: 500;
     white-space: nowrap;
     text-transform: uppercase;
     letter-spacing: $spacing;
@@ -88,6 +84,7 @@ $spacing: 0.02em;
     span {
       display: inline-block;
       transform: translateY(0);
+      font-weight: 800;
     }
 
     &.active span {
@@ -96,7 +93,7 @@ $spacing: 0.02em;
     }
 
     .divider {
-      font-weight: normal;
+      font-weight: 200;
     }
   }
 
@@ -112,34 +109,193 @@ $spacing: 0.02em;
 }
 
 // 카드 스타일
+.cardWrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
 .card {
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 200px;
-  color: #fff;
-  background: #000;
-  font-size: 15px;
-  font-weight: 400;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  overflow: hidden;
   z-index: 9999;
-  padding: 1rem 1.4rem;
-  border-radius: 4px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  mix-blend-mode: normal;
-  isolation: isolate;
+  transition: width 1s ease-in-out, height 1s ease-in-out,
+    border-radius 1s ease-in-out;
 
-  .name {
-    margin-bottom: 4px;
-    font-size: 20px;
-    font-weight: bold;
+  &.open {
+    width: 400px;
+    height: 400px;
+    border-radius: 24px;
   }
-  .phone,
-  .email {
-    line-height: 1.4;
-    font-size: 14px;
-    font-weight: 200;
+
+  &.close {
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
   }
-  .notice {
+
+  .rotatingBackground {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    animation: spin 10s linear infinite;
+    transform-origin: center center;
+
+    mask-image: url("/mask-shape.svg");
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    -webkit-mask-image: url("/mask-shape.svg");
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: width 1s ease-in-out, height 1s ease-in-out;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  &.open .rotatingBackground {
+    width: 400px;
+    height: 400px;
+  }
+
+  &.close .rotatingBackground {
+    width: 1px;
+    height: 1px;
+  }
+
+  .cardContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.6s ease;
+
+    p,
+    address {
+      text-align: center;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      &.address {
+        margin-top: 20px;
+      }
+    }
+
+    .typingArea {
+      font-size: 20px;
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .name {
+      margin-bottom: 20px;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    .address,
+    .copyright {
+      text-transform: uppercase;
+      font-size: 14px;
+      font-style: normal;
+    }
+
+    .phone,
+    .email,
+    .address,
+    .copyright {
+      font-weight: 100;
+      opacity: 0.7;
+    }
+
+    .phone,
+    .email {
+      font-size: 16px;
+      letter-spacing: $spacing;
+      opacity: 1;
+    }
+  }
+
+  .visible {
+    opacity: 1;
+  }
+
+  .closeButton {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.9;
+
+    .bar {
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 100%;
+      height: 1px; // 막대 두께
+      background-color: #fff;
+      transform-origin: center;
+    }
+
+    .bar:nth-of-type(2) {
+      transform: rotate(45deg);
+    }
+
+    .bar:nth-of-type(3) {
+      transform: rotate(-45deg);
+    }
+
+    &:hover .bar {
+      opacity: 0.5;
+    }
   }
 }

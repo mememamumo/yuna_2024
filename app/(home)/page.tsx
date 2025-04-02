@@ -49,27 +49,46 @@ export default function Main() {
       {/* profile */}
       <section>
         <h3>Web Service Planning, Development & Operations Expert</h3>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>React</li>
+          <li>NextJS</li>
+          <li>CSS Modules</li>
+          <li>WebGL</li>
+          <li>ThreeJS</li>
+          <li>MatterJS</li>
+          <li>Responsive Design</li>
+          <li>Cross Browsing</li>
+          <li>Web Accessibility</li>
+          <li>SEO Optimization</li>
+          <li>UI Development</li>
+          <li>UX Strategy</li>
+          <li>User Centered Design</li>
+          <li>Agile Project</li>
+          <li>Animation</li>
+          <li>Interactive Web</li>
+          <li>Creative Coding</li>
+        </ul>
+
         <p>
-          Starting as a web publisher, I have expanded my expertise to web
-          planning and project management, gaining experience in the entire web
-          service development process, from planning and UI development to
-          publishing and project operation. When planners understand development
-          and developers understand planning and design, projects can be
-          approached more comprehensively and from diverse perspectives. With
-          expertise in HTML, CSS, JavaScript, and React, I specialize in
-          building responsive and cross-browser web pages, optimizing web
-          accessibility and SEO, designing UI/UX, and managing projects using
-          Agile methodologies to deliver user-centric, optimized web services.
+          Bridging planning and publishing to create purposeful, structured
+          digital experiences.
         </p>
         <p>
-          웹 퍼블리셔로 시작하여 웹 기획 및 프로젝트 매니지먼트까지 경험하며,
-          기획부터 UI 개발, 퍼블리싱, 프로젝트 운영까지 웹 서비스 구축의
-          전반적인 과정을 수행해 왔습니다. 기획자가 개발을 이해하고, 개발자가
-          기획과 디자인을 이해할 때, 프로젝트는 더욱 입체적이고 다양한 관점에서
-          접근할 수 있습니다. HTML, CSS, JavaScript, React를 활용한 반응형 웹 및
-          크로스 브라우징 웹 페이지 제작, 웹 접근성 및 SEO 최적화, UI/UX 설계 및
-          서비스 기획, 애자일 프로젝트 관리 등의 역량을 바탕으로 사용자 중심의
-          최적화된 웹 서비스를 제공합니다.
+          웹 퍼블리셔로 커리어를 시작해 웹 기획과 프로젝트 매니지먼트까지
+          경험하며,기획부터 UI 개발, 퍼블리싱, 운영에 이르기까지 웹 서비스
+          구축의 전 과정을 직접 수행해 왔습니다. 기획자가 개발을 이해하고,
+          개발자가 기획과 디자인을 이해할 때프로젝트는 더욱 입체적이고 다양한
+          관점에서 완성됩니다.
+        </p>
+        <p>
+          HTML, CSS, JavaScript, React를 기반으로 한 반응형 웹 제작과 크로스
+          브라우징 대응,웹 접근성과 SEO 최적화, UI/UX 설계 및 서비스 기획,
+          애자일 방식의 프로젝트 운영까지—사용자 중심의 최적화된 웹 서비스를
+          만드는 데 집중하고 있습니다.
         </p>
       </section>
 

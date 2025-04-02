@@ -41,8 +41,8 @@ const Header = () => {
         const isMobile = window.innerWidth < 768;
         setText(
           isMobile
-            ? "YUNA ≡ Bridging UI & Code"
-            : "YUNA ≡ Where UI Meets Code and Strategy"
+            ? "YUNA – Bridging UI & Code"
+            : "YUNA – Where UI Meets Code and Strategy"
         );
       };
 
