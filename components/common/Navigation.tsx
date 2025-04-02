@@ -60,7 +60,7 @@ export default function Navigation() {
   };
 
   useEffect(() => {
-    if (isCardActive) {
+    if (isVisible) {
       const timeout = setTimeout(() => {
         setIsTypingStart(true);
       }, 1000);
@@ -70,7 +70,7 @@ export default function Navigation() {
         setIsTypingStart(false);
       };
     }
-  }, [isCardActive]);
+  }, [isVisible]);
 
   return (
     <>
@@ -126,7 +126,11 @@ export default function Navigation() {
                 ) : contactInfo ? (
                   <>
                     {isTypingStart && (
-                      <p className={styles.typingArea}>
+                      <p
+                        className={`${styles.typingArea} ${
+                          !isVisible ? styles.fadeOut : ""
+                        }`}
+                      >
                         <Typewriter
                           words={["디자인을 코드로 · 계획을 경험으로"]}
                           loop={Infinity}
