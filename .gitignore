@@ -10,6 +10,7 @@
 # 🧪 Testing
 # ───────────────
 coverage/
+/test
 
 # ───────────────
 # 🔧 Build output
@@ -19,8 +20,13 @@ coverage/
 /build
 dist/
 
-# drei custom build output
-drei/dist/
+# ───────────────
+# 🧹 Unused from drei
+# ───────────────
+drei/examples/
+drei/benchmarks/
+drei/storybook/
+drei/.storybook/
 
 # ───────────────
 # 💻 OS / Editor

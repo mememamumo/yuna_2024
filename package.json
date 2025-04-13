@@ -1,5 +1,5 @@
 {
-  "name": "yuna_2024",
+  "name": "yuna_portfolio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,19 +10,31 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@react-three/fiber": "8.18.0",
+    "@react-three/drei": "file:../drei",
+    "@types/three": "^0.148.0",
     "framer-motion": "^12.6.2",
+    "gsap": "^3.12.7",
     "matter-js": "^0.20.0",
-    "next": "^14.2.5",
+    "next": "^14.2.26",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-simple-typewriter": "^5.0.1",
-    "sass": "^1.86.1"
+    "stats.js": "^0.17.0",
+    "three": "^0.148.0"
   },
   "devDependencies": {
     "@types/matter-js": "^0.19.8",
     "@types/node": "20.14.10",
     "@types/react": "18.3.3",
     "@types/react-dom": "^18.3.5",
+    "glslify": "^7.1.1",
+    "glslify-loader": "^2.0.0",
+    "next-transpile-modules": "^10.0.1",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
+    "raw-loader": "^4.0.2",
+    "sass": "^1.86.3",
     "typescript": "5.5.3"
   }
 }

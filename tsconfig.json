@@ -19,10 +19,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@react-three/drei": ["./drei/src"]
     },
-    "typeRoots": ["./types", "./node_modules/@types"],
-    "baseUrl": "./"
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types",
+      "./node_modules/@react-three/drei/dist"
+    ],
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "next-env.d.ts",
@@ -30,7 +36,13 @@
     "**/*.ts",
     "src",
     "**/*.tsx",
-    "types"
+    "types",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "types/**/*",
+    "global.d.ts",
+    "./drei/src"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.stories.tsx"]
 }
