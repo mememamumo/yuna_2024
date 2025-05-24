@@ -1,9 +1,10 @@
 // 변수 정의
 $text-color: #fff;
-$spacing: 0.02em;
+$spacing: 0.04em;
+$font-default: 15px;
 
 // 헤더 스타일
-.header {
+.primaryNavigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,10 +16,10 @@ $spacing: 0.02em;
   padding: 0;
   color: $text-color;
   mix-blend-mode: difference;
-  font-size: 15px;
+  font-size: $font-default;
   font-weight: 800;
 
-  .container {
+  .navContainer {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -30,20 +31,18 @@ $spacing: 0.02em;
     color: #fff;
   }
 
-  .rightSection {
+  .navRight {
     display: flex;
     align-items: center;
     gap: 32px;
   }
 
-  .nav {
+  .navItems {
     display: flex;
     gap: 24px;
 
     .navLink {
-      all: unset;
       position: relative;
-      text-decoration: none;
       text-transform: uppercase;
       letter-spacing: $spacing;
       transition: color 0.3s ease;
@@ -55,7 +54,6 @@ $spacing: 0.02em;
         flex-direction: column;
         transition: transform 0.4s ease;
         height: 48px;
-        cursor: pointer;
       }
 
       &:hover .textLayer {
@@ -70,7 +68,7 @@ $spacing: 0.02em;
     }
   }
 
-  .clock {
+  .timestamp {
     width: 120px;
     letter-spacing: $spacing;
   }
@@ -136,7 +134,7 @@ $spacing: 0.02em;
   width: 1px;
   height: 1px;
   border-radius: 50%;
-  overflow: hidden;
+  //   overflow: hidden;
   z-index: 9999;
   transition: width 1s ease-in-out, height 1s ease-in-out,
     border-radius 1s ease-in-out;

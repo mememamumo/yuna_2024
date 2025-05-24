@@ -32,7 +32,7 @@ const WavyText = ({ text }: WavyTextProps) => {
       onMouseLeave={() => setIsActive(false)}
     >
       {text.split("").map((char, i) => {
-        const isDivider = char === "–";
+        const isDivider = char === "-";
         return (
           <span
             key={i}

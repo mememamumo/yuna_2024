@@ -1,0 +1,64 @@
+// 변수 정의
+$text-color: #fff;
+$spacing: 0.04em;
+
+.profileButtons {
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  gap: 26px;
+  .profileButton {
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: $spacing;
+    transition: color 0.3s ease;
+    overflow: hidden;
+    height: 24px;
+    .textLayer {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s ease;
+      height: 48px;
+    }
+
+    &:hover .textLayer {
+      transform: translateY(-24px);
+    }
+
+    .text {
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      font-size: 16px;
+    }
+    .arrow {
+      display: inline-block;
+      position: relative;
+      padding: 0 16px 0 0;
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+      }
+      &::before {
+        top: 8px;
+        right: 0;
+        height: 8px;
+        width: 8px;
+        border: 2px solid $text-color;
+        border-left: none;
+        border-bottom: none;
+      }
+      &::after {
+        top: 13.5px;
+        right: 0;
+        height: 2px;
+        width: 13px;
+        transform: rotate(-45deg);
+        background-color: $text-color;
+      }
+    }
+  }
+}

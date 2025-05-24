@@ -34,15 +34,15 @@ const Header = () => {
   }, []);
 
   const useResponsiveText = () => {
-    const [text, setText] = useState("YUNA ≡ Where UI Meets Code and Strategy");
+    const [text, setText] = useState("YUNA - Where UI Meets Code and Strategy");
 
     useEffect(() => {
       const handleResize = () => {
         const isMobile = window.innerWidth < 768;
         setText(
           isMobile
-            ? "YUNA – Bridging UI & Code"
-            : "YUNA – Where UI Meets Code and Strategy"
+            ? "YUNA - Bridging UI & Code"
+            : "YUNA - Where UI Meets Code and Strategy"
         );
       };
 
@@ -57,13 +57,13 @@ const Header = () => {
   const responsiveText = useResponsiveText();
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.clock}>{timeString}</div>
+    <header className={styles.primaryNavigation}>
+      <div className={styles.navContainer}>
+        <div className={styles.timestamp}>{timeString}</div>
         <Link href="/" className={styles.logo}>
           <WavyText text={responsiveText} />
         </Link>
-        <div className={styles.rightSection}>
+        <div className={styles.navRight}>
           <Navigation />
         </div>
       </div>

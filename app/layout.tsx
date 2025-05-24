@@ -1,5 +1,6 @@
+import "@/styles/globals.scss";
+
 import Header from "@/components/common/Header";
-import "@/styles/global.scss";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +14,13 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
+      <head>
+        {/* 글로벌 폰트 연결 */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css"
+        />
+      </head>
       <body>
         <Header />
         {children}

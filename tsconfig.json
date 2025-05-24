@@ -20,13 +20,18 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@react-three/drei": ["./drei/src"]
+      "@react-three/drei": ["./drei/src"],
+      "@/components/*": ["components/*"],
+      "@/common/*": ["common/*"],
+      "@/interactive/*": ["components/interactive/*"]
     },
     "typeRoots": [
       "./types",
       "./node_modules/@types",
-      "./node_modules/@react-three/drei/dist"
+      "./node_modules/@react-three/drei/dist",
+      "./global.d.ts"
     ],
+    "types": ["node"],
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true
   },
@@ -42,7 +47,8 @@
     "**/*.tsx",
     "types/**/*",
     "global.d.ts",
-    "./drei/src"
+    "./drei/src",
+    "types/glsl.d.ts"
   ],
   "exclude": ["node_modules", "**/*.stories.tsx"]
 }

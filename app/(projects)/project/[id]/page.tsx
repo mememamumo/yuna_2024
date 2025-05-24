@@ -1,6 +1,6 @@
 import ProjectDetail from "@/components/project/ProjectDetail";
 import ProjectInfo from "@/components/project/ProjectInfo";
-import { getProject } from "@/lib/api";
+import { getProject } from "@/lib/api/api";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {

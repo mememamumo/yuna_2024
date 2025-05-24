@@ -3,8 +3,6 @@
    License: none (public domain)
 */
 
-@import url("https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css");
-
 :root {
   --font-sans: "SUIT", -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
@@ -142,6 +140,10 @@ table {
   border-spacing: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: #121212;
   background-color: rgb(249, 249, 249);
@@ -157,4 +159,11 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+a,
+button {
+  all: unset;
+  text-decoration: none;
+  cursor: pointer;
 }

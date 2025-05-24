@@ -1,4 +1,4 @@
-import { getPortfolio } from "@/lib/api";
+import { getPortfolio } from "@/lib/api/api";
 import Link from "next/link";
 
 export const metadata = {

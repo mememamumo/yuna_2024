@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectExperience } from "@/lib/api";
+import { ProjectExperience } from "@/lib/api/api";
 import Link from "next/link";
 
 export default function ProjectDetail({

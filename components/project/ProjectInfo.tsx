@@ -1,4 +1,4 @@
-import { getPortfolio } from "@/lib/api";
+import { getPortfolio } from "@/lib/apiapi";
 
 async function getProjects(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 2000));

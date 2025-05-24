@@ -1,7 +1,7 @@
 "use client";
 
 import Portal from "@/components/Portal";
-import { Contact, getContact } from "@/lib/api";
+import { Contact, getContact } from "@/lib/api/api";
 import styles from "@/styles/common/header.module.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -74,7 +74,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={styles.nav}>
+      <nav className={styles.navItems}>
         <Link href="/project" className={styles.navLink}>
           <div className={styles.textLayer}>
             <span className={`${styles.text} ${styles.top}`}>Project</span>
