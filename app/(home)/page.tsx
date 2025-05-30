@@ -13,15 +13,16 @@ const RefractionCanvas = dynamic(
   { ssr: false }
 );
 
+import PageFadeWrapper from "@/components/common/PageFadeWrapper";
 import Marquee from "@/components/interactive/Marquee";
-import { capabilitiesWords } from "@/lib/data/marqueeWords";
-
 import ProfileButtons from "@/components/section/ProfileButtons";
+import { capabilitiesWords } from "@/lib/data/marqueeWords";
 import styles from "@/styles/page/home.module.scss";
 
 export default function Main() {
+  // throw new Error("강제 500 에러");
   return (
-    <div className={styles.portfolioMain}>
+    <PageFadeWrapper>
       <main className={styles.canvasContainer}>
         <RefractionCanvas />
         <div className={styles.infoNavigator}>
@@ -33,6 +34,6 @@ export default function Main() {
       {/* <Suspense fallback={null}>
         <FallingUI />
       </Suspense> */}
-    </div>
+    </PageFadeWrapper>
   );
 }

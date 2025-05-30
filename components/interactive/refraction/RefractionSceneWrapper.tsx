@@ -12,16 +12,12 @@ import RefractionScene from "./RefractionScene";
 import createGridRoomMesh from "./utils/createGridRoomMesh";
 
 const COLORS = [
-  "#f87171",
-  "#fb923c",
-  "#facc15",
-  "#4ade80",
-  "#2dd4bf",
-  "#60a5fa",
-  "#818cf8",
-  "#c084fc",
-  "#f472b6",
-  "#fbbf24",
+  "#fff84f",
+  "#b8e1ff",
+  "#d2fc3a",
+  "#f6bff6",
+  "#ceb4ff",
+  "#67eebd",
 ];
 
 export default function RefractionSceneWrapper({

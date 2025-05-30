@@ -1,0 +1,22 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  z-index: 99999;
+  pointer-events: none;
+  overflow: hidden;
+  transition: top 0s;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.path {
+  transition: d 0.1s ease-out;
+  will-change: d;
+}

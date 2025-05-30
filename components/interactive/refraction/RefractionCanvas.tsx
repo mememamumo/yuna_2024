@@ -1,17 +1,27 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
 
 import { useCursorStore } from "@/store/useCursorStore";
 import RefractionSceneWrapper from "./RefractionSceneWrapper";
 
+import styles from "@/styles/page/home.module.scss";
 import TrailDisplayMesh from "../mouse-trail/TrailDisplayMesh";
 import { TrailMaterial } from "../mouse-trail/TrailMaterial";
 
 export default function RefractionCanvas() {
   const setCursor = useCursorStore((s) => s.setCursor);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // 등장 시 트랜지션 효과를 위한 상태 설정
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsVisible(true);
+    }, 100); // 약간의 delay 후 등장
+    return () => clearTimeout(timeout);
+  }, []);
 
   // 마우스 위치 저장
   useEffect(() => {
@@ -44,7 +54,15 @@ export default function RefractionCanvas() {
   );
 
   return (
-    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+    <div
+      className={`${styles.canvasFade} ${isVisible ? styles.visible : ""}`}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+        background: "#f1f1f5",
+      }}
+    >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
         gl={{ antialias: true, alpha: true }}

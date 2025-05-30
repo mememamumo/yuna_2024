@@ -114,7 +114,6 @@ export default function ProfilePanel({
             <h2 className="visuallyHidden">Skills</h2>
             <div className={styles.box}>
               <h3 className={`${styles.en} ${styles.title}`}>
-                {/* Web Service Planning, Development & Operations Expert */}
                 1. Capabilities
                 <span>/ 업무 수행 능력</span>
               </h3>

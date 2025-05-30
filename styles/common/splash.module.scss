@@ -1,0 +1,83 @@
+.container {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+}
+
+.fadeOut {
+  animation: fadeOut 1s ease forwards;
+}
+
+.box {
+  width: 1px;
+  height: 1px;
+  position: relative;
+  background-color: #fff;
+  border: 0 solid transparent;
+  transition: width 1s ease, height 1s ease, border-width 1s ease;
+}
+
+.expand {
+  width: 190px;
+  height: 130px;
+  border-top: 35px solid #101010;
+  border-bottom: 35px solid #d1d1d5;
+  border-left: 60px solid #dfe0e2;
+  border-right: 60px solid #dfe0e2;
+}
+
+.caption {
+  margin-top: 35px;
+  font-size: 18px;
+  color: #111;
+  opacity: 0;
+  animation: textFade 1s ease-out forwards;
+  animation-delay: 2.2s;
+  letter-spacing: 0.03em;
+}
+
+.ico {
+  display: block;
+  width: 9%;
+  height: 4%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  background: url(/yuna-logo-splash.png) no-repeat center center;
+  background-size: cover;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: width 1s ease, height 1s ease, opacity 1s ease, transform 1s ease;
+  transition-delay: 2.2s;
+}
+
+.show {
+  width: 80%;
+  height: 30%;
+  opacity: 1;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes textFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

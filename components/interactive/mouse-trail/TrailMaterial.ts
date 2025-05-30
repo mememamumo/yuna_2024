@@ -15,7 +15,7 @@ export class TrailMaterial extends ShaderMaterial {
         uPointer: { value: new Vector2(0, 0) },
         uActiveCount: { value: TRAIL_COUNT },
         uTime: { value: 0.0 },
-        uColor: { value: new Color("#f87171") },
+        uColor: { value: new Color("#fff") },
       },
       vertexShader: `
         varying vec2 vPosition;

@@ -11,7 +11,17 @@
   right: 20px;
   width: 100px;
   height: 100px;
-  background: #020000;
+  background-image: linear-gradient(
+    rgba(256, 256, 256, 1),
+    rgba(256, 256, 256, 1),
+    rgba(256, 256, 256, 1),
+    rgba(256, 256, 256, 0.1),
+    rgba(256, 256, 256, 0),
+    rgba(256, 256, 256, 0),
+    rgba(256, 256, 256, 0)
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 50%;
   transform: scale(0);
   transition: transform 1s ease-in-out;
@@ -27,7 +37,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  color: white;
+  color: #111;
   pointer-events: auto;
 
   display: flex;
@@ -54,7 +64,7 @@
 
   button {
     background: transparent;
-    color: white;
+    color: #111;
     border: none;
     font-size: 61px;
     font-weight: 800;
@@ -68,7 +78,8 @@
     line-height: 1;
 
     &:hover {
-      color: #ccc;
+      color: rgb(0, 0, 0);
+      opacity: 0.4;
     }
   }
 
@@ -83,12 +94,12 @@
   max-height: 100%;
   padding: 12px 12px 0 3px;
   font-size: 16px;
-  font-weight: 100;
+  font-weight: 400;
   line-height: 2;
   letter-spacing: 0.05em;
 
   scrollbar-width: thin;
-  scrollbar-color: white transparent;
+  scrollbar-color: #111 transparent;
 
   .en {
     font-size: 18px;
@@ -99,7 +110,7 @@
     justify-content: flex-start;
     margin-top: 50px;
     padding-top: 20px;
-    border-top: 1px solid rgba(256, 256, 256, 0.5);
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
     &:nth-child(2) {
       margin-top: 0;
     }
@@ -114,7 +125,7 @@
       margin-top: 4px;
       margin-left: 4px;
       font-size: 15px;
-      font-weight: 100;
+      font-weight: 400;
       opacity: 0.6;
     }
   }
@@ -130,12 +141,12 @@
         span {
           margin-left: 10px;
           font-size: 15px;
-          font-weight: 100;
+          font-weight: 400;
           opacity: 0.5;
           &.position {
             padding: 0 3px;
             font-size: 14px;
-            background-color: rgba(256, 256, 256, 0.2);
+            background-color: rgba(0, 0, 0, 0.1);
             opacity: 1;
           }
         }
@@ -182,7 +193,7 @@
     left: 0;
     width: 100%;
     height: 1px; // 막대 두께
-    background-color: #fff;
+    background-color: #111;
     transform-origin: center;
   }
 

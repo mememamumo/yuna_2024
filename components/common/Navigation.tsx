@@ -3,10 +3,10 @@
 import Portal from "@/components/Portal";
 import { Contact, getContact } from "@/lib/api/api";
 import styles from "@/styles/common/header.module.scss";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import CustomLink from "./CustomLink";
 
 export default function Navigation() {
   const path = usePathname();
@@ -75,12 +75,12 @@ export default function Navigation() {
   return (
     <>
       <nav className={styles.navItems}>
-        <Link href="/project" className={styles.navLink}>
+        <CustomLink href="/project" className={styles.navLink}>
           <div className={styles.textLayer}>
             <span className={`${styles.text} ${styles.top}`}>Project</span>
             <span className={`${styles.text} ${styles.bottom}`}>Project</span>
           </div>
-        </Link>
+        </CustomLink>
         <button className={styles.navLink} onClick={openContact}>
           <div className={styles.textLayer}>
             <span className={`${styles.text} ${styles.top}`}>Contact</span>
@@ -146,7 +146,7 @@ export default function Navigation() {
                     <p className={styles.phone}>{contactInfo.phone}</p>
                     <p className={styles.email}>{contactInfo.email}</p>
                     <address className={styles.address}>
-                      Seoul, Republic of Korea
+                      Gunpo City, Republic of Korea
                     </address>
                     <p className={styles.copyright}>
                       ©ALL RIGHTS RESERVED BY YUNA

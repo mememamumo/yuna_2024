@@ -3,8 +3,8 @@
 import Navigation from "@/components/common/Navigation";
 import WavyText from "@/components/interactive/WavyText";
 import styles from "@/styles/common/header.module.scss";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import CustomLink from "./CustomLink";
 
 const Header = () => {
   const [timeString, setTimeString] = useState("");
@@ -60,9 +60,9 @@ const Header = () => {
     <header className={styles.primaryNavigation}>
       <div className={styles.navContainer}>
         <div className={styles.timestamp}>{timeString}</div>
-        <Link href="/" className={styles.logo}>
+        <CustomLink href="/" className={styles.logo}>
           <WavyText text={responsiveText} />
-        </Link>
+        </CustomLink>
         <div className={styles.navRight}>
           <Navigation />
         </div>
