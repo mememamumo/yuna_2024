@@ -6,6 +6,7 @@ import styles from "@/styles/common/header.module.scss";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
+import ContactCopyItem from "./ContactCopyItem";
 import CustomLink from "./CustomLink";
 
 export default function Navigation() {
@@ -132,7 +133,7 @@ export default function Navigation() {
                         }`}
                       >
                         <Typewriter
-                          words={["디자인을 코드로 · 계획을 경험으로"]}
+                          words={["Let’s shape what comes next."]}
                           loop={Infinity}
                           cursor
                           cursorStyle="|"
@@ -142,9 +143,20 @@ export default function Navigation() {
                         />
                       </p>
                     )}
-                    <p className={styles.name}>{contactInfo.name}</p>
-                    <p className={styles.phone}>{contactInfo.phone}</p>
-                    <p className={styles.email}>{contactInfo.email}</p>
+                    <p className={styles.name}>
+                      {contactInfo.name}
+                      <span>YUNA LEE</span>
+                    </p>
+                    <ContactCopyItem
+                      type="phone"
+                      value={contactInfo.phone}
+                      className={styles.phone}
+                    />
+                    <ContactCopyItem
+                      type="email"
+                      value={contactInfo.email}
+                      className={styles.email}
+                    />
                     <address className={styles.address}>
                       Gunpo City, Republic of Korea
                     </address>

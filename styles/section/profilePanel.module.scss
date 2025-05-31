@@ -104,6 +104,14 @@
   .en {
     font-size: 18px;
   }
+  .bold {
+    font-size: 18px;
+    font-weight: 800;
+    span {
+      font-size: 17px;
+      font-weight: 300;
+    }
+  }
   .box {
     display: flex;
     align-items: flex-start;

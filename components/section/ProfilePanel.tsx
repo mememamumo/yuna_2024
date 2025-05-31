@@ -88,9 +88,16 @@ export default function ProfilePanel({
         return (
           <section>
             <h2 className="visuallyHidden">Profile</h2>
+            <p className={styles.bold}>
+              이유나 <span>/ YUNA LEE</span>
+            </p>
             <p className={styles.en}>
               Bridging planning and publishing to create purposeful, structured
               digital experiences.
+            </p>
+            <p>
+              기획과 퍼블리싱을 아우르며, 목적에 맞고 구조적인 디지털 경험을
+              만듭니다.
             </p>
             <p>
               웹 퍼블리셔로 커리어를 시작해 웹 기획과 프로젝트 매니지먼트까지

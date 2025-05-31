@@ -140,8 +140,8 @@ $font-default: 15px;
     border-radius 1s ease-in-out;
 
   &.open {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     border-radius: 24px;
   }
 
@@ -183,8 +183,8 @@ $font-default: 15px;
   }
 
   &.open .rotatingBackground {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
   }
 
   &.close .rotatingBackground {
@@ -204,7 +204,7 @@ $font-default: 15px;
     left: 50%;
     z-index: 2;
     opacity: 0;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -53%);
     transition: opacity 0.6s ease;
 
     p,
@@ -215,13 +215,14 @@ $font-default: 15px;
       padding: 0;
       line-height: 1.6;
       &.address {
-        margin-top: 20px;
+        margin-top: 40px;
+        margin-bottom: 2px;
       }
     }
 
     .typingArea {
-      font-size: 19px;
-      font-weight: 400;
+      font-size: 22px;
+      font-weight: 300;
       color: #fff;
       text-align: center;
       line-height: 1.6;
@@ -236,9 +237,28 @@ $font-default: 15px;
     }
 
     .name {
+      margin-top: 20px;
       margin-bottom: 20px;
-      font-size: 25px;
+      font-size: 24px;
       font-weight: 500;
+      letter-spacing: $spacing;
+      span {
+        position: relative;
+        padding-left: 20px;
+        &::before {
+          content: "";
+          display: inline-block;
+          width: 2px;
+          height: 24px;
+          margin-left: 20px;
+          background-color: #fff;
+          opacity: 0.5;
+          position: absolute;
+          left: -10px;
+          top: 50%;
+          transform: translate(0, -50%);
+        }
+      }
     }
 
     .address,
@@ -256,9 +276,14 @@ $font-default: 15px;
       opacity: 0.7;
     }
 
-    .phone,
+    .phone {
+      font-size: 19px;
+      letter-spacing: $spacing;
+      opacity: 1;
+    }
     .email {
-      font-size: 16px;
+      margin-top: 8px;
+      font-size: 22px;
       letter-spacing: $spacing;
       opacity: 1;
     }

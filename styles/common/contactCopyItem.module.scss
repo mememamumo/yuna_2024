@@ -1,0 +1,96 @@
+.wrapper {
+  display: inline-block;
+  width: auto;
+  height: 28px;
+  line-height: 28px;
+  padding: 0;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 기본 텍스트 (이메일, 전화번호) */
+.t1 {
+  position: relative;
+  display: block;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Copy 텍스트 */
+.t2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 19px;
+  color: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Copied 텍스트 */
+.t3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  line-height: 28px;
+  font-size: 19px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* 상태: default */
+.default .t1 {
+  transform: translateY(0%);
+  opacity: 1;
+}
+.default .t2,
+.default .t3 {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* 상태: hover */
+.hover .t1 {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.hover .t2 {
+  transform: translateY(0%);
+  opacity: 1;
+}
+.hover .t3 {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* 상태: copied */
+.copied .t1,
+.copied .t2 {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.copied .t3 {
+  transform: translateY(0%);
+  opacity: 1;
+}
