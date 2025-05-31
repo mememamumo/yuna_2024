@@ -62,7 +62,27 @@ export default function RefractionSceneWrapper({
       if (gridRoom) dummyScene.add(gridRoom);
       if (trailMesh) dummyScene.add(trailMesh);
 
-      setIsReady(true);
+      // 초기 수동 렌더 3프레임 반복
+      let frameCount = 0;
+      const renderLoop = () => {
+        gl.setRenderTarget(writeFBORef.current);
+        gl.clear();
+        gl.render(dummyScene, camera);
+        gl.setRenderTarget(null);
+
+        const temp = writeFBORef.current;
+        writeFBORef.current = readFBORef.current;
+        readFBORef.current = temp;
+
+        frameCount++;
+        if (frameCount < 3) {
+          requestAnimationFrame(renderLoop);
+        } else {
+          setIsReady(true);
+        }
+      };
+
+      renderLoop();
     };
 
     load();
@@ -70,7 +90,7 @@ export default function RefractionSceneWrapper({
     return () => {
       cancelled = true;
     };
-  }, [dummyScene, trailMaterial]);
+  }, [dummyScene, trailMaterial, gl, camera]);
 
   // FBO 더블 버퍼링 렌더링
   useFrame(({ clock }) => {
@@ -88,11 +108,12 @@ export default function RefractionSceneWrapper({
     gl.render(dummyScene, camera);
     gl.setRenderTarget(null);
 
-    // Swap buffers
     const temp = writeFBORef.current;
     writeFBORef.current = readFBORef.current;
     readFBORef.current = temp;
   });
+
+  if (!isReady) return null;
 
   return (
     <RefractionScene

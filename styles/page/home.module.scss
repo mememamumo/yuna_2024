@@ -22,3 +22,12 @@ $font-default: 15px;
   font-size: $font-default;
   font-weight: 800;
 }
+
+.canvasFade {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+}

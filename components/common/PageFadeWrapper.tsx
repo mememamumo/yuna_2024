@@ -12,22 +12,22 @@ export default function PageFadeWrapper({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (!isAnimating) {
-      // 페이드인 시작
-      const timer = setTimeout(() => setVisible(true), 30);
-      return () => clearTimeout(timer);
-    } else {
-      setVisible(false); // 애니메이션 중엔 안 보이게
-    }
-  }, [isAnimating]);
+    // 로딩 시작 직후에도 콘텐츠는 렌더되도록 함
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 50); // 곡선로딩보다 살짝만 느리게 시작
+    return () => clearTimeout(timer);
+  }, []); // mount 시점 1회만 실행
 
   return (
     <div
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "none" : "translateY(0)",
-        transition: "opacity 0.2s ease, transform 0.2s ease",
+        transition: "opacity 0.4s ease, transform 0.4s ease",
         minHeight: "100vh",
+        position: "relative",
+        zIndex: 0,
       }}
     >
       {children}
